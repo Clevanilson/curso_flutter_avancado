@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class NextEventPlayer {
   String id;
   String name;
