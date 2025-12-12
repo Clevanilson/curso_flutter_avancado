@@ -1,9 +1,44 @@
 import 'package:curso_flutter_avancado/domain/entities/next_event_player.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import '../../support/faker_service.dart';
+
 void main() {
   String initialsOf(String name) =>
       NextEventPlayer(id: 'any_id', name: name, isConfirmed: false).initials;
+
+  late String id;
+  late String name;
+  late DateTime confirmationDate;
+  late bool isConfirmed;
+  late String photoUrl;
+  late String position;
+
+  setUp(() {
+    id = FakerService.randomId();
+    name = FakerService.randomName();
+    confirmationDate = FakerService.randomDate();
+    isConfirmed = FakerService.randomBool();
+    photoUrl = FakerService.randomUrl();
+    position = FakerService.randomName();
+  });
+
+  test('Should create a NextEventPlayer entity', () {
+    final player = NextEventPlayer(
+      id: id,
+      name: name,
+      isConfirmed: isConfirmed,
+      confirmationDate: confirmationDate,
+      photoUrl: photoUrl,
+      position: position,
+    );
+    expect(player.id, id);
+    expect(player.name, name);
+    expect(player.isConfirmed, isConfirmed);
+    expect(player.confirmationDate, confirmationDate);
+    expect(player.photoUrl, photoUrl);
+    expect(player.position, position);
+  });
 
   test('should return the first letter of the first and last name', () {
     expect(initialsOf('Clevanilson Oliveira'), 'CO');
