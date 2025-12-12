@@ -40,4 +40,13 @@ class NextEventPlayer {
     final lastChar = names.length > 1 ? names.last[0] : '';
     return '$firstChar$lastChar' == '' ? '-' : '$firstChar$lastChar';
   }
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'isConfirmed': isConfirmed,
+    'confirmationDate': confirmationDate?.toIso8601String(),
+    'photoUrl': photoUrl,
+    'position': position,
+  };
 }

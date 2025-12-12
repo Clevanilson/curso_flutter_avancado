@@ -1,6 +1,7 @@
 import 'package:curso_flutter_avancado/domain/entities/next_event_player.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import '../../support/domain/entities/next_event_player_mock_builder.dart';
 import '../../support/services/faker_service.dart';
 
 void main() {
@@ -67,5 +68,19 @@ void main() {
   test('Should return - if the name is empty', () {
     expect(initialsOf(''), '-');
     expect(initialsOf('  '), '-');
+  });
+
+  test('Should convert to json', () {
+    final player = NextEventPlayerMockBuilder().build();
+    final json = player.toJson();
+    expect(json['id'], player.id);
+    expect(json['name'], player.name);
+    expect(json['isConfirmed'], player.isConfirmed);
+    expect(
+      json['confirmationDate'],
+      player.confirmationDate?.toIso8601String(),
+    );
+    expect(json['photoUrl'], player.photoUrl);
+    expect(json['position'], player.position);
   });
 }
