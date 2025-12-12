@@ -1,7 +1,7 @@
 import 'package:curso_flutter_avancado/domain/entities/next_event_player.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../support/faker_service.dart';
+import '../../support/services/faker_service.dart';
 
 void main() {
   String initialsOf(String name) =>
