@@ -83,4 +83,15 @@ void main() {
     expect(json['photoUrl'], player.photoUrl);
     expect(json['position'], player.position);
   });
+
+  test('Should create from Json', () {
+    final player = NextEventPlayerMockBuilder().build();
+    final newPlayer = NextEventPlayer.fromJson(player.toJson());
+    expect(newPlayer.id, player.id);
+    expect(newPlayer.name, player.name);
+    expect(newPlayer.isConfirmed, player.isConfirmed);
+    expect(newPlayer.confirmationDate, player.confirmationDate);
+    expect(newPlayer.photoUrl, player.photoUrl);
+    expect(newPlayer.position, player.position);
+  });
 }

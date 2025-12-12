@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class NextEventPlayer {
   String id;
   String name;
@@ -33,6 +35,18 @@ class NextEventPlayer {
     confirmationDate: confirmationDate,
     initials: _getInitials(name),
   );
+
+  factory NextEventPlayer.fromJson(Map<String, dynamic> json) =>
+      NextEventPlayer(
+        id: json['id'],
+        name: json['name'],
+        isConfirmed: json['isConfirmed'],
+        confirmationDate: json['confirmationDate'] != null
+            ? DateTime.parse(json['confirmationDate'])
+            : null,
+        photoUrl: json['photoUrl'],
+        position: json['position'],
+      );
 
   static String _getInitials(String name) {
     final names = name.toUpperCase().trim().split(' ');
