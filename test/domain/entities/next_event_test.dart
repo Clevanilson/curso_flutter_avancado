@@ -41,4 +41,24 @@ void main() {
       expect(playerJson, player.toJson());
     });
   });
+
+  test('Should create from Json', () {
+    final event = NextEventMockBuilder().build();
+    final newEvent = NextEvent.fromJson(event.toJson());
+    expect(newEvent.id, event.id);
+    expect(newEvent.name, event.name);
+    expect(newEvent.date, event.date);
+
+    for (var i = 0; i < newEvent.players.length; i++) {
+      expect(newEvent.players[i].id, event.players[i].id);
+      expect(newEvent.players[i].name, event.players[i].name);
+      expect(newEvent.players[i].isConfirmed, event.players[i].isConfirmed);
+      expect(
+        newEvent.players[i].confirmationDate,
+        event.players[i].confirmationDate,
+      );
+      expect(newEvent.players[i].photoUrl, event.players[i].photoUrl);
+      expect(newEvent.players[i].position, event.players[i].position);
+    }
+  });
 }

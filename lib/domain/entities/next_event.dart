@@ -13,6 +13,18 @@ class NextEvent {
     required this.players,
   });
 
+  factory NextEvent.fromJson(Map<String, dynamic> json) => NextEvent(
+    id: json['id'],
+    name: json['name'],
+    date: DateTime.parse(json['date']),
+    players: (json['players'] as List<dynamic>)
+        .map(
+          (playerJson) =>
+              NextEventPlayer.fromJson(playerJson as Map<String, dynamic>),
+        )
+        .toList(),
+  );
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
